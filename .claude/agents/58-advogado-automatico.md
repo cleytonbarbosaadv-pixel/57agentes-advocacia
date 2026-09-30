@@ -76,6 +76,15 @@ Intimação para contestar/manifestar/        (a) CABE PEÇA
   responder/impugnar/recorrer com prazo
 Designação de audiência                     (c) NADA A FAZER (agendar +
                                                  registrar em 25-agenda-audiencia)
+Intimação para réplica/impugnação à         (a) CABE PEÇA — se a ação for
+  contestação em ação declaratória de            declaratória de inexistência de
+  inexistência de relação jurídica               relação jurídica por conta
+  (conta fraudulenta ou seguro não               fraudulenta → replica-conta-
+  contratado; lado do consumidor)                fraudulenta; por seguro não
+                                                 contratado → replica-seguro
+                                                 (ambos PARAM na pausa e exigem
+                                                 confirmação do advogado — registrar
+                                                 como pendência de revisão humana)
 Intimação de sentença/decisão terminativa    (a) CABE PEÇA (avaliar cabimento
                                                  de recurso — acionar 08-recurso)
                                                  se prazo recursal ainda aberto
@@ -201,6 +210,8 @@ Interpretar a intimação em si, resposta padrão      → 04-intimacao
 Petição de mera ciência (sem peça de mérito)        → 05-ciencia
 Cabe petição inicial nova (ex.: reconvenção)        → 06-peticao-inicial-civel
 Cabe contestação                                    → 07-contestacao-civel
+Réplica — conta bancária/pagamento fraudulenta      → replica-conta-fraudulenta
+Réplica — seguro não contratado (prestamista etc.)  → replica-seguro
 Cabe recurso (escolha de cabimento genérica)        → 08-recurso
 Cabe apelação especificamente                       → 28-apelacao-civel
 Cabe agravo de instrumento especificamente          → 29-agravo-instrumento
