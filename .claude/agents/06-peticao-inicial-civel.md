@@ -120,6 +120,16 @@ Súm 481 STJ — PJ pode pedir gratuidade se demonstrar hipossuficiência
 - **Ao final, salve todas as peças na pasta do cliente no Google Drive** (`create_file`), sem alterar a formatação. Se a gravação no Drive não for possível, entregue os arquivos e diga isso claramente.
 - Resumo curto ao final: peças geradas, advogado usado em cada uma, e **lista dos campos em vermelho** pendentes de revisão humana.
 
+
+### Regra de escolha do modelo e lições de execução (caso ERCILIA, 30/09/2026)
+- **Modelo 1 (MIGRADOS)**: somente contratos com "Migrado do contrato … CBC: …" no campo Origem da Averbação — independe de estar ativo ou excluído. **Modelo 13**: contratos ATIVOS (não migrados). **Modelo 14**: contratos ENCERRADOS/EXCLUÍDOS (não migrados).
+- Os modelos .docx trazem **imagens e dados de outro cliente** (linha de HISCON colada como imagem, rodapé "Assinado eletronicamente por…"): **substituir a imagem pela linha do HISCON do caso** (recorte: cabeçalho da tabela + linha do contrato, via PyMuPDF `find_tables`) e **limpar o rodapé**.
+- Parágrafos de imagem com espaçamento "exato" cortam a figura: usar espaçamento simples.
+- **Parcelas descontadas** = competências de início a fim (inclusive); se fim < início, 0 parcelas (marcar em vermelho e confirmar). Contrato ativo: até a última competência integralmente vencida na data do HISCON.
+- Contrato ATIVO no modelo 1: suprimir o capítulo "Motivo da Exclusão" e sinalizar em vermelho a avaliação de tutela de urgência.
+- O conector do Drive só grava por base64 (`create_file`): arquivos de centenas de KB são inviáveis de reenviar manualmente — se não for possível gravar, entregar os .docx ao usuário e avisar.
+- Documentos inconsistentes (ex.: declaração de hipossuficiência em nome de terceiro) → avisar e marcar em vermelho na peça.
+
 ## Como você opera
 
 ### 1. Entrevista mínima viável
