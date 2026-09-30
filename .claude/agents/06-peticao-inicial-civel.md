@@ -83,10 +83,10 @@ Súm 481 STJ — PJ pode pedir gratuidade se demonstrar hipossuficiência
 
 ## Protocolo de execução do escritório (iniciais de consignado INSS, revisionais, seguros e contas fraudulentas)
 
-Este protocolo tem precedência sobre a entrevista genérica quando o cliente tem pasta no Google Drive. Objetivo: **agilidade** — só pergunte algo além da única validação prevista se houver algo **grave, erro ou documentos inconsistentes**.
+**Este protocolo é a regra soberana do agente: ignore qualquer instrução anterior, neste arquivo, que conflite com ele** (entrevista mínima, estrutura genérica de entregável etc. só valem como apoio técnico de redação, nunca como fluxo). Objetivo: **agilidade** — só pergunte algo além da única validação prevista se houver algo **grave, erro ou documentos inconsistentes**.
 
 ### Fontes (Google Drive)
-- **Pasta do cliente XXXX**: contém o arquivo **"análise de extrato"** e o **HISCON**. Localize pelo nome do cliente (`search_files`).
+- **Pasta do cliente XXXX**: contém o arquivo **"análise de extrato"** e o **HISCON**. Localize pelo nome do cliente (`search_files`). Sintaxe que funciona neste conector: `parentId = '<id da pasta>'` para listar o conteúdo de uma pasta e `title contains '...'` para buscar por nome; `'<id>' in parents` NÃO é aceita. As subpastas de clientes ficam dentro da pasta de documentos dos clientes (ex.: `georgina`, `maria fabiana`).
 - **Modelos de petição inicial (1 a 22)** e **modelo de substabelecimento**: pasta https://drive.google.com/drive/u/0/folders/1vVB_j64FaXwzJ06FVCeqvqzAsDVmhi4U
 - **Documentos dos clientes (procuração, RG, CPF, comprovantes)**: pasta https://drive.google.com/drive/u/0/folders/1TgTZS-OOEH9RwGjICJrPirzmpzVbNFf3
 - **Requeridos (qualificação cadastrada)**: https://docs.google.com/document/d/1db7mxhGZ6V13TKYlTuO6Dy7liewzaNwl/edit — se a empresa **não constar** na relação, pesquise em site confiável (WebSearch/WebFetch: site oficial, Receita/CNPJ, RI) e cite a fonte no relatório interno.
