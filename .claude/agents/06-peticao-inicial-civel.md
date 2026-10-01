@@ -188,3 +188,17 @@ Direto, formal, técnico. Nunca "respeitosamente" sem fundamento. Cite CPC com a
 - [ ] Valor da causa correto?
 - [ ] Pedido de honorários (CPC 85)?
 - [ ] Protocolo OK no PJe/e-SAJ/Projudi?
+
+## 9. Padrão do escritório — ações de consignado/cartão (cliente com pasta no Google Drive)
+
+Quando o pedido for "fazer as iniciais da cliente X no Drive", siga este fluxo (aplica-se a Jaci, Bernadete, Georgina e demais clientes de consignado fraudulento):
+
+1. **Localizar a pasta da cliente** (Drive: `search_files` por nome) e listar também subpastas. Ler: análise do extrato (`analise_extrato_*`), HISCON (`extrato_emprestimo_consignado_*`), procuração/declaração, contrato de honorários, contratos bancários, comprovante de residência.
+2. **Confirmar identidade olhando o RG (imagem)**: baixar o arquivo (`download_file_content`; o resultado grande é salvo em disco), decodificar o base64 para .jpg e abrir com `Read` para ver a imagem. Nunca confiar só no OCR. Conferir nome (RG × INSS), CPF/RG, data de nascimento e **calcular a idade na data do ajuizamento**. Em RG novo (CIN) o nº do RG é o CPF.
+3. **Usar os modelos do escritório da pasta de modelos do Drive** (não redigir do zero): `13` contratos ativos (tutela de urgência; também cartões RMC/RCC ativos), `14` contratos inativos, `1` migrado/excluído (nulidade da migração + preenchimento do "Motivo da Exclusão"), `10` PicPay RMA, `16` consignado encerrado, `21` nulidade derivada, `17–19` BPC, `2` seguros. Mapeamento: Bloco A ativo → 13; Bloco A excluído/encerrado → 1; Blocos B e C → 14; Bloco D (cartão ativo) → 13; rubrica "RMA" de PicPay no extrato → 10 (valor da causa = 2× parcelas + dano moral).
+4. **Deduplicar a análise**: contratos que aparecem em mais de um bloco/banco (ex.: Cetelem 739 × Cetelem-BNP 752 × Inbursa) entram numa só ação. Conferir números de contrato da análise contra o extrato (a análise pode trocar números entre bancos); em divergência, prevalece o extrato e o fato vai para o relatório final.
+5. **Réus**: usar o arquivo `REQUERIDOS - CNPJ E ENDEREÇO` da pasta de modelos (CNPJ e sede). Se o contrato da pasta mostrar outro credor (ex.: CCB da Facta migrada para o Pine), incluir os dois como corréus.
+6. **Campos em aberto: o mínimo.** Buscar tudo na pasta (procuração, extrato, RG, comprovante). Não deixar colchetes/realces no texto da peça; o que realmente faltar (ex.: HISCRE, procuração, declaração de residência) vai no relatório final ao advogado, e a peça usa redação válida ("a apurar em liquidação"). Se o comprovante de residência estiver em nome de terceiro, listar o documento do titular e a declaração de residência (Lei 7.115/83) no rol.
+7. **Cálculos**: dobro (EAREsp 676.608/RS) só para descontos a partir de 30/03/2021; antes, restituição simples. Para contratos ativos somar parcelas vincendas ao valor da causa. Dano moral padrão dos modelos: R$ 40.000,00 (ajustar se o advogado pedir). Teto do JEC: 40 salários mínimos (R$ 64.840,00 em 2026).
+8. **Exclusões pedidas pelo advogado prevalecem** (ex.: não gerar a peça de refinanciamento de RMC do BMG quando a análise sugerir tese própria).
+9. **Entrega**: gerar um .docx por ação (python-docx), validar que não restam colchetes, compactar e enviar com `SendUserFile`. Tentar salvar na mesma pasta do Drive; se o conector não permitir enviar binário, entregar o zip em Word para salvamento manual. Relatório final: idade/data de nascimento confirmadas no RG, o que foi mesclado/excluído, divergências de extrato e pendências documentais.
