@@ -2,8 +2,10 @@ const fs=require('fs');
 const D=require('/opt/node-tools/node_modules/docx');
 const {Document,Packer,Paragraph,TextRun,Table,TableRow,TableCell,AlignmentType,BorderStyle,WidthType,ShadingType,LevelFormat,VerticalAlign,Footer,PageNumber}=D;
 const NAVY='1F3864',BLUE='2E75B6';
-function runs(t,o={}){ // **bold**
-  return t.split('**').map((s,i)=>new TextRun({text:s,bold:(i%2===1)||o.bold,italics:o.italics,size:o.size||24,color:o.color,font:'Arial'})).filter(r=>true);
+function runs(t,o={}){ // **bold**, *italic*
+  const out=[];
+  t.split('**').forEach((seg,i)=>{ seg.split('*').forEach((s2,j)=>{ if(s2==='') return; out.push(new TextRun({text:s2,bold:(i%2===1)||o.bold,italics:(j%2===1)||o.italics,size:o.size||24,color:o.color,font:'Arial'})); }); });
+  return out;
 }
 const body=(t)=>new Paragraph({alignment:AlignmentType.JUSTIFIED,spacing:{line:360,lineRule:'auto',before:0,after:160},indent:{firstLine:709},children:runs(t)});
 const plain=(t,o={})=>new Paragraph({alignment:o.align||AlignmentType.JUSTIFIED,spacing:{line:360,before:0,after:o.after??160},indent:o.indent||{},children:runs(t,o)});
