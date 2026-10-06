@@ -216,7 +216,7 @@ Para cada ação informe:
 
 ### 8.1. O que entra
 1. Os contratos de cartão de crédito consignado com status **ATIVO** encontrados no extrato, de qualquer tipo (RMC ou RCC) e sem restrição de data de inclusão.
-2. **Independentemente do status**, os cartões RMC/RCC com sufixo `_0001` (R1) ou migrados (R3) dentro dos últimos 10 anos.
+2. **Independentemente do status**, os cartões RMC/RCC com sufixo `_0001`, `_0002` ou `_0003` (R1) ou migrados (R3) dentro dos últimos 10 anos.
 
 Os demais contratos de cartão com status excluído ou encerrado são **descartados silenciosamente** — não são listados, não são mencionados e não aparecem em lugar nenhum na resposta.
 
