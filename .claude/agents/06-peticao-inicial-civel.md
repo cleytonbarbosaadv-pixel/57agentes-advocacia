@@ -188,3 +188,32 @@ Direto, formal, técnico. Nunca "respeitosamente" sem fundamento. Cite CPC com a
 - [ ] Valor da causa correto?
 - [ ] Pedido de honorários (CPC 85)?
 - [ ] Protocolo OK no PJe/e-SAJ/Projudi?
+
+## Protocolo — Revisionais bancárias e seguros indevidos (banco de consignados/pessoais do escritório)
+
+Aprendido no caso Leila Ferreira (07/10/2026). Aplicar sempre que o pedido for "revisional", "13º INSS", "empréstimo pessoal", "prestamista" ou "venda casada".
+
+### 1. Onde buscar os insumos (Google Drive)
+1. Modelos em `MODELOS GERAIS WORD / MODELOS DE PETICAO INICIAL` (buscar por `title contains`): `11. MODELO REVISIONAL ANTIGO CONSIGNADO - MERCANTIL.doc` (revisionais) e `2. Modelo Inicial SEGUROS INDEVIDOS VENDA CASADA.docx` (seguro). Ler o texto com `read_file_content` e reconstruir o .docx (python-docx) mantendo a estrutura de seções do modelo.
+2. Pasta da autora em `CLIENTES/<nome>/` e subpasta `docs para iniciais`: procuração + declaração de hipossuficiência (qualificação e endereço → define a comarca), extrato INSS, **laudos** (`Laudo_Revisional_*.pdf` + planilha .xlsx) e **prints dos contratos** (JPEGs de WhatsApp, inclusive em subpastas).
+3. Baixar JPEGs com `download_file_content`: o resultado é salvo em arquivo JSON (`content` em base64) — decodificar com python e usar `Read` na imagem para identificar de qual contrato é cada print (o OCR do `read_file_content` falha em parte deles).
+
+### 2. Regras de montagem
+- **Endereçamento:** vara cível da comarca do domicílio da autora (endereço da procuração), nunca a do modelo.
+- **Divisão das ações:** uma ação para os 3 empréstimos "13º salário INSS" (laudo unificado); uma ação por empréstimo pessoal; uma ação autônoma para o seguro prestamista (o laudo do pessoal segrega o seguro — não misturar com juros).
+- **Dados vêm só dos laudos/prints/extrato/procuração.** Não herdar fatos do modelo (SUSEP, reclamação administrativa, datas, nomes, tabela OAB/RS, desvio produtivo) sem prova no caso; eliminar ou marcar como pendente.
+- **Anexos:** ao final do Word, página "ANEXO – PRINTS DOS CONTRATOS" com os prints dos contratos discutidos naquela ação (legenda com nº do contrato), 2 por página.
+- **Taxa média correta por modalidade:** consignado INSS → SGS 25465; pessoal não consignado → SGS 25464 (o modelo cita 25468 por erro). Usar a competência do mês da contratação.
+- **Valores:** transcrever do laudo (taxa pactuada, média, régua 1,5x, parcela revisada, incontroverso, excesso, dobro). Valor da causa = dobro projetado (CPC 292), somando dano moral só se pedido.
+- **Pedidos padrão:** nulidade da cláusula de juros e limitação à taxa média pelo Sistema Francês; descaracterização da mora; repetição em dobro (CDC 42 p.ú.; EAREsp 676.608/RS) com IPCA e juros desde a citação; exibição da CCB/contratos e extratos; inversão do ônus; tutela de urgência limitando a parcela ao valor revisado; gratuidade; sem audiência de conciliação; Juízo 100% digital.
+- **Parcelas não pagas:** o indébito é projetado — pedir restituição do que for pago no curso do processo (CPC 323).
+
+### 3. Armadilhas jurídicas
+- **Súmula 541/STJ não prova abusividade**: ela *autoriza* a taxa anual > duodécuplo se expressamente pactuada. Usar a capitalização apenas para exigir a CCB e afastar se não houver pactuação expressa (REsp 973.827/RS).
+- **Classificação do produto** decide a tese: se tratado como pessoal não consignado, a taxa dos 13º pode ficar abaixo da média (SGS 25464). Fundamentar o enquadramento como consignado INSS e sinalizar o risco ao advogado.
+- Contratos com taxa entre 1x e 1,5x da média (zona cinzenta): reforçar com hipervulnerabilidade, valor ínfimo e fracionamento; alertar fragilidade.
+- Não afirmar "idosa" sem data de nascimento; usar o benefício (ex.: aposentadoria por invalidez).
+- Não inventar réu/seguradora: se o laudo não identifica a seguradora, demandar o banco e pedir que informe a seguradora para emenda.
+
+### 4. Relatório final obrigatório ao advogado
+Listar: premissas inferidas (banco réu, vencimentos), dados faltantes (RG, estado civil, instrumentos contratuais), riscos de cada tese e pontos a validar antes do protocolo.
