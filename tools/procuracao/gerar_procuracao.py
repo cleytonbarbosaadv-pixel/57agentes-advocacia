@@ -2,7 +2,7 @@
 """Gera PROCURAÇÃO + DECLARAÇÃO DE HIPOSSUFICIÊNCIA (e, opcionalmente, CONTRATO DE HONORÁRIOS)
 a partir dos modelos do escritório (modelo_*.docx desta pasta), em .docx e PDF.
 
-    python gerar_procuracao.py cliente.json -o "<pasta de saída>" [--sem-pdf] [--contrato]
+    python gerar_procuracao.py cliente.json -o "<pasta de saída>" [--sem-pdf] [--sem-contrato]
 
 cliente.json (campos; omitir/null = não aparece na qualificação):
 {
@@ -15,7 +15,7 @@ cliente.json (campos; omitir/null = não aparece na qualificação):
   "logradouro": "Praça Jacome Calheiros, 52, Centro Histórico",   # via, nº, complemento, bairro
   "cidade": "Penedo", "uf": "AL", "cep": "57200-000",             # cidade = a do comprovante de residência
   "data": "2026-10-13",              # opcional (padrão: hoje); local da assinatura = cidade/uf
-  "honorarios_percentual": 40        # só para o contrato (padrão 40)
+  "honorarios_percentual": 50        # só para o contrato (padrão 50)
 }
 """
 import argparse, datetime, json, os, re, shutil, subprocess, sys, unicodedata
@@ -133,20 +133,21 @@ def main():
     ap.add_argument("json")
     ap.add_argument("-o", "--saida", default=".")
     ap.add_argument("--sem-pdf", action="store_true")
-    ap.add_argument("--contrato", action="store_true", help="gera também o contrato de honorários")
+    ap.add_argument("--sem-contrato", action="store_true", help="não gera o contrato de honorários (por padrão sempre gera)")
     a = ap.parse_args()
     c = json.load(open(a.json, encoding="utf-8"))
     for k in ("nome", "logradouro", "cidade", "uf"):
         if not c.get(k):
             sys.exit(f"campo obrigatório ausente: {k}")
     os.makedirs(a.saida, exist_ok=True)
-    pct = int(c.get("honorarios_percentual", 40))
+    pct = int(c.get("honorarios_percentual", 50))
     mapa = {"QUALIFICACAO": qualificacao(c), "NOME": c["nome"].strip().upper(),
             "CIDADE_UF": f'{c["cidade"].strip()}/{c["uf"].strip().upper()}',
             "DATA": data_extenso(c.get("data")), "HONORARIOS": f"{pct}% ({extenso(pct)} por cento)"}
     nome = re.sub(r'[\\/:*?"<>|]', "", mapa["NOME"])
-    saidas = [("modelo_procuracao_declaracao.docx", f"PROCURAÇÃO E DECLARAÇÃO - {nome}")]
-    if a.contrato:
+    saidas = [("modelo_procuracao_declaracao.docx", f"PROCURAÇÃO E DECLARAÇÃO - {nome} (CLEYTON)"),
+              ("modelo_procuracao_declaracao_ana.docx", f"PROCURAÇÃO E DECLARAÇÃO - {nome} (ANA CRISTINA)")]
+    if not a.sem_contrato:
         saidas.append(("modelo_contrato_honorarios.docx", f"CONTRATO DE HONORÁRIOS - {nome}"))
     for modelo, base in saidas:
         dx = os.path.join(a.saida, base + ".docx")
