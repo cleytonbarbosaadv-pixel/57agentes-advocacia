@@ -1,0 +1,58 @@
+{
+  "tipo_acao": "migrado",
+  "cliente": {
+    "nome": "Ercilia Francisco Cardoso Pinto",
+    "qualificacao": "",
+    "cpf": "",
+    "endereco": "",
+    "email": "",
+    "idade": "",
+    "nascimento": "",
+    "comarca": "",
+    "vara": "",
+    "uf": "",
+    "cidade": "",
+    "local": "",
+    "data": ""
+  },
+  "beneficio": {
+    "especie": "Aposentadoria por Idade",
+    "nb": "173.605.060-2",
+    "base_calculo": 1621.00,
+    "igual_salario_minimo": true,
+    "banco_pagador": "Banco Agibank S.A.",
+    "unica_renda_confirmada": false
+  },
+  "banco": {
+    "razao_social": "Novo Banco Continental S.A. – Banco Múltiplo",
+    "fantasia": "NBC Bank",
+    "codigo": "753",
+    "cnpj": "74.828.799/0001-45",
+    "endereco": "Rua Uruguai, nº 155, Conjunto 1308, Centro, Porto Alegre/RS, CEP 90.010-140",
+    "email_intimacoes": ""
+  },
+  "contrato": {
+    "numero": "0003745375",
+    "status": "ativo",
+    "data_averbacao": "2026-01-20",
+    "inicio": "02/2026",
+    "fim": "01/2034",
+    "parcelas": 96,
+    "valor_parcela": 37.25,
+    "valor_emprestado": 1631.89,
+    "iof": 54.52,
+    "valor_pago": 1577.37,
+    "primeiro_desconto": "2026-03-10",
+    "data_extrato": "2026-08-03",
+    "parcelas_descontadas": null,
+    "dano_moral": 40000,
+    "contato_com_banco_comprovado": false,
+    "cedente": {
+      "nome": "QI Sociedade de Crédito Direto S/A",
+      "codigo": "329",
+      "data_averbacao": "2026-01-20",
+      "data_exclusao": "2026-01-28",
+      "motivo_exclusao": "Exclusão por troca de titularidade"
+    }
+  }
+}
