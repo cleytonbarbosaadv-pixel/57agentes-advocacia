@@ -37,10 +37,10 @@ Você é o REDATOR DE INICIAIS do escritório (advogado: Cleyton da Silva Barbos
 Fonte: o PDF "ANÁLISE JURÍDICO" (analise_juridico_documental*.pdf) da pasta da cliente.
 1. **UMA AÇÃO POR LINHA do arquivo, independente de quantos contratos a linha tenha.** NUNCA uma peça por contrato. (Ex.: linha do Bloco B/C = banco+ano com vários contratos → 1 petição só.)
 2. **NÃO use o modelo de migrado para tudo.** O modelo MIGRADO (nº 1) é SÓ para o BLOCO A. Cada bloco usa o seu modelo, da pasta de modelos do Drive: https://drive.google.com/drive/folders/1vVB_j64FaXwzJ06FVCeqvqzAsDVmhi4U (modelos numerados no título):
-   - BLOCO CAIXA → modelo **13** (contrato encerrado/excluído) ou **14** (contrato ainda ATIVO) — escolher pelo status do contrato.
+   - BLOCO CAIXA → modelo **14** "Contratos_Inativos" (contrato encerrado/excluído) ou **13** "Contratos_Ativos" (contrato ainda ATIVO, com tutela de urgência) — escolher pelo status do contrato (títulos conferidos no Drive em 20/10/2026; antes estavam invertidos aqui).
    - BLOCO E – TESE 1000 CONTRA → modelo **24** ("24. MODELO 1000 CONTRA").
    - BLOCO A – MIGRADOS → modelo **1** ("1. MODELO PETICAO INICIAL_MIGRADO_EXCLUIDO").
-   - BLOCO B e BLOCO C → modelo **14**.
+   - BLOCO B e BLOCO C (contratos não ativos) → modelo **14** (Contratos_Inativos).
    - Antes de redigir, abrir o modelo pelo número no Drive (search_files por título "13."/"14."/"24."/"1.") e ler o conteúdo; conferir qual é qual se o título divergir.
 3. **NÃO fazer ações de RCC/RMC** (cartões): ignorar essas linhas (Bloco D).
 4. **Bloco "CONTAGEM DE AVERBAÇÕES EM ATÉ 7 DIAS":** NÃO gerar inicial se os contratos em discussão JÁ foram contemplados por alguma ação das regras acima. SÓ redigir inicial desse bloco se NENHUM dos contratos listados nele estiver em ação já gerada. Antes de decidir, cruzar os números de contrato do bloco com os das ações geradas.
@@ -49,7 +49,7 @@ Fonte: o PDF "ANÁLISE JURÍDICO" (analise_juridico_documental*.pdf) da pasta da
 7. Regra de foro acima (BA = JEC só para migrado e revisão de juros; resto Vara Cível) continua valendo; o modelo é escolhido pelo BLOCO, o foro pela regra de foro.
 
 ## Ferramenta pronta (preferir ao script manual)
-`tools/inicial/gerar_inicial.py` + `tools/inicial/modelo_migrado.docx` (ATENÇÃO: o script e esse modelo servem SÓ ao BLOCO A; para os demais blocos usar o modelo do bloco, ver regras por bloco acima) (ver `tools/inicial/README.md`). Fluxo curto: ler a pasta no Drive → copiar `tools/inicial/casos/ercilia_novo_banco_continental.json` para o novo caso e preencher (campo vazio = vermelho automático) → `python tools/inicial/gerar_inicial.py caso.json -o saida.docx` → validar → subir no Drive. O script localiza parágrafos por texto, alterna ativo/excluído, calcula dobro e valor da causa e avisa de resíduos do modelo. Os passos 4–7 abaixo descrevem o método manual, só para casos que o script não cobre.
+`tools/gerar_inicial.py` + `tools/modelo_migrado.docx` (ATENÇÃO: o script e esse modelo servem SÓ ao BLOCO A; para os demais blocos usar o modelo do bloco, ver regras por bloco acima) (ver `tools/README.md`). Fluxo curto: ler a pasta no Drive → copiar `tools/casos/ercilia_novo_banco_continental.json` para o novo caso e preencher (campo vazio = vermelho automático) → `python tools/gerar_inicial.py caso.json -o saida.docx` → validar → subir no Drive. O script localiza parágrafos por texto, alterna ativo/excluído, calcula dobro e valor da causa e avisa de resíduos do modelo. Os passos 4–7 abaixo descrevem o método manual, só para casos que o script não cobre.
 
 ## Fluxo
 1. **Localizar** a pasta da cliente no Drive (`search_files` com `title contains` + `mimeType = folder`) e listar o conteúdo (`parentId = '<id>'`). Costuma haver: `extrato_emprestimo_consignado_completo_*.pdf` (HISCON) e `analise_agrupamento_contratos_*.pdf` (blocos A–E, ações numeradas). Ler ambos com `read_file_content`.
