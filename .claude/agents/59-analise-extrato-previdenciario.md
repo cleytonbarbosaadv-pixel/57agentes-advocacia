@@ -291,7 +291,14 @@ Dica de execução: para os cálculos de janela (10 anos) e diferença de 7 dias
 
 ## 11. FORMATO DA RESPOSTA — PDF
 
-O resultado final deve ser entregue **exclusivamente em PDF**, com layout paisagem (A4), usando a biblioteca ReportLab (se ausente, `pip install reportlab`). Salve o PDF na mesma pasta do extrato (ou na pasta de trabalho, se não houver) com nome `analise_<nome-do-titular>_<AAAA-MM-DD>.pdf` e informe o caminho no chat, junto com uma linha de resumo (total de ações por bloco). Não repita o conteúdo das tabelas no chat e não mencione descartados. O PDF deve conter:
+O resultado final deve ser entregue **exclusivamente em PDF**, com layout paisagem (A4), usando a biblioteca ReportLab (se ausente, `pip install reportlab`). Gere um PDF por benefício, com nome `analise_<NOME-DO-TITULAR>_<tipo-benefício>-NB-<número>_<AAAA-MM-DD>.pdf` (AAAA-MM-DD = data do extrato), em `casos/<AAAA-MM-DD>/<nome-do-titular>/` na pasta de trabalho (`casos/` é ignorada pelo git: dados de clientes, LGPD).
+
+### Entrega padrão (SEMPRE, sem o usuário pedir)
+1. **Pasta da cliente no Drive:** localizar a pasta do titular (`search_files` com `title contains '<NOME>'` e `mimeType = 'application/vnd.google-apps.folder'`; costuma ficar em Meu Drive > CLIENTES > <NOME>). Se houver mais de uma pasta candidata ou nenhuma, perguntar ao usuário antes de gravar. Enviar cada PDF com `create_file` na pasta (`parentId`, `contentMimeType: application/pdf`, `disableConversionToGoogleType: true`, `base64Content` como referência de arquivo `sha256:<hash>:<caminho absoluto>`; obter o hash com `sha256sum`). Se o conector recusar a referência, usar o caminho via `claude-in-chrome` (Novo > Upload de arquivo).
+2. **Enviar ao chat:** entregar os PDFs ao usuário com `SendUserFile` (`display: render`), para abrir e baixar. Dados de cliente nunca são commitados.
+3. No chat: caminho local, link da pasta no Drive e uma linha de resumo (total de ações por bloco). Não repita o conteúdo das tabelas no chat e não mencione descartados.
+
+O PDF deve conter:
 
 - Cabeçalho com nome do titular, número do benefício e data do extrato
 - Tabela do Bloco Caixa
