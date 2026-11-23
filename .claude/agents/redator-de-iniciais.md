@@ -78,7 +78,7 @@ Fonte: o PDF "ANÁLISE JURÍDICO" (analise_juridico_documental*.pdf) da pasta da
 - Idade aparece em mais de um lugar (fatos e tabela "Etária e social"); tabela de vulnerabilidade tem linha "Sanitária" (invalidez) → reescrever como "Previdenciária".
 - Cabeçalho de "Observação preliminar" cita Operação Sem Desconto, Acórdão TCU 1.094/2026 e Lei 15.327/2026 — texto do escritório; manter.
 - Tabelas de jurisprudência (REsp 2.052.228/DF; TJBA RI 0142519-77.2023.8.05.0001) são do modelo; manter, mas se o usuário pedir, revalidar.
-- **RODAPÉ DA PÁGINA: SEMPRE VAZIO** (ordem de 23/11/2026). O modelo migrado (`tools/modelo_migrado.docx` e cópia em `nuvem-repo/tools/inicial/`) foi limpo: sem "Assinado eletronicamente por…", sem código de validação PROJUDI, sem qualquer inscrição no rodapé. Nunca reintroduzir texto de rodapé; ao baixar modelo do Drive, esvaziar os `word/footer*.xml` antes de redigir e conferir que nenhum rodapé tem texto.
+- **RODAPÉ DA PÁGINA: SEMPRE VAZIO** (ordem de 23/11/2026). O modelo migrado (`tools/modelo_migrado.docx` e cópia em `nuvem-repo/tools/inicial/`) foi limpo: sem "Assinado eletronicamente por…", sem código de validação PROJUDI, sem qualquer inscrição no rodapé. Nunca reintroduzir texto de rodapé; o modelo do Drive já está sem rodapé; ao baixá-lo, apenas conferir que nenhum `word/footer*.xml` tem texto (se tiver, esvaziar).
 - Assinatura (fecho do corpo): "CLEYTON DA SILVA BARBOSA - OAB/MS 17.311" (BA: "OAB/BA 92.148"); local = cidade de residência da autora (procuração); data em vermelho se não informada.
 - A cliente pode ter outros contratos do mesmo banco: a seção "delimitação objetiva" deve refletir o que a análise de agrupamento mostra (1 contrato por ação em migrados).
 
